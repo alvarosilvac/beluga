@@ -13,6 +13,8 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(morgan('combined'))
 
+const PORT = process.env.PORT || 5000;
+
 var sess = {
   secret: process.env.SESSION_SECRET,
   cookie: {
@@ -43,6 +45,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 });
 
-app.listen(5000, function() {
-  console.log("Listening on port 5000!");
+app.listen(PORT, function() {
+  console.log(`Listening on port ${PORT}!`);
 });
