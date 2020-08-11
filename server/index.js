@@ -7,9 +7,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const app = module.exports = express();
+var morgan = require('morgan')
 
 app.use(helmet());
 app.use(cookieParser());
+app.use(morgan('combined'))
 
 var sess = {
   secret: process.env.SESSION_SECRET,

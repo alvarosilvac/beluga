@@ -32,6 +32,7 @@ function Admin(props) {
         if (!results) return;
 
         if (results.error) {
+          console.log("WUPS")
           logout();
         } else {
           const newStatuses = results.map(o => o.metadata.status || "Ordered");

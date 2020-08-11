@@ -33,8 +33,8 @@ import { useSelector, useDispatch } from "react-redux";
 function App(props) {
   const [quantity, setQuantity] = useState();
 
-  const config = useSelector(state => state.reducers.config);
-  const isAdmin = useSelector(state => state.reducers.isAdmin);
+  const config = useSelector(state => state.config);
+  const isAdmin = useSelector(state => state.isAdmin);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -82,7 +82,7 @@ function App(props) {
   });
 
   return (
-      <StripeProvider apiKey={config.api_key}>
+    <StripeProvider apiKey={config.api_key}>
       <Router>
         <ScrollToTop>
           <MuiThemeProvider theme={theme}>
@@ -151,7 +151,7 @@ function App(props) {
           </MuiThemeProvider>
         </ScrollToTop>
       </Router>
-    < /StripeProvider>
+    </StripeProvider>
   );
 };
 export default App;

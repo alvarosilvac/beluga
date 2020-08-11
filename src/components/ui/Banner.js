@@ -37,7 +37,7 @@ const styles = theme => ({
 });
 
 function Banner({ classes, quantity, config, width }) {
-  const isAdmin = useSelector(state => state.reducers.isAdmin);
+  const isAdmin = useSelector(state => state.isAdmin);
 
   const number = quantity ? ` (${quantity})` : "";
 

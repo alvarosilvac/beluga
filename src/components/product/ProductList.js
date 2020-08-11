@@ -58,6 +58,7 @@ function ProductList(props) {
     fetch('/product-info/')
       .then(res => res.json())
       .then(skus => {
+        console.log("HERE", skus)
         let newProducts = [...products]
         newProducts.forEach(product => {
           let skuList = [...skus]

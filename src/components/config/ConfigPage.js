@@ -15,7 +15,7 @@ import { Paper, Tabs, Tab, Box, Typography } from '@material-ui/core';
 
 
 function ConfigPage(props) {
-  const config = useSelector(state => state.reducers.config);
+  const config = useSelector(state => state.config);
   const [storeConfig, setStoreConfig] = useState(config);
   const [tab, setTab] = useState(0);
   const dispatch = useDispatch();

@@ -11,7 +11,7 @@ import { Paper, Button } from "@material-ui/core";
 
 function FeaturedProducts(props) {
   const [collection, setCollection] = useState(props.collection);
-  const storeConfig = useSelector(state => state.reducers.config);
+  const storeConfig = useSelector(state => state.config);
   const dispatch = useDispatch();
 
   const handleChange = (name, value) => {

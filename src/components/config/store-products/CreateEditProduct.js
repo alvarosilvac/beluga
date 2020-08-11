@@ -19,7 +19,7 @@ function CreateEditProduct(props) {
   const [product, setProduct] = useState(initialProduct);
   const [skus, setSkus] = useState([]);
 
-  const config = useSelector(state => state.reducers.config);
+  const config = useSelector(state => state.config);
   const dispatch = useDispatch();
 
   useEffect(() => {

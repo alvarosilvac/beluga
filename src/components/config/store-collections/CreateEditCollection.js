@@ -18,7 +18,7 @@ function CreateEditCollection(props) {
 
   const [activeStep, setActiveStep] = useState(0);
   const [collection, setCollection] = useState(initialCollection);
-  const storeConfig = useSelector(state => state.reducers.config);
+  const storeConfig = useSelector(state => state.config);
   const dispatch = useDispatch();
 
   useEffect(() => {
