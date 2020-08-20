@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const path = require('path');
 const stripe = require("stripe")(process.env.STRIPE_KEY);
+const sync_products = require("./utils").sync_products
 const app = module.exports = express();
 var morgan = require('morgan')
 
@@ -47,4 +48,5 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, function() {
   console.log(`Listening on port ${PORT}!`);
+  sync_products()
 });

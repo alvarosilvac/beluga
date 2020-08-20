@@ -5,12 +5,11 @@ import storage from 'redux-persist/lib/storage/session';
 import config from './reducer_config.js'
 import isAdmin from './reducer_admin.js'
 
-
 const persist_config = {
   key: 'root',
   storage,
   stateReconciler: autoMergeLevel1,
-  blacklist: []
+  blacklist: ['config']
 }
 
 export default (history) => persistCombineReducers(persist_config, {

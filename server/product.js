@@ -9,11 +9,38 @@ app.get('/product-info/:id', function(req, res) {
     });
 });
 
-app.get('/product-info/', function(req, res) {
-  stripe.skus.list(
-    function(err, skus) {
-      err ? res.status(500).send(err) : res.json(skus.data);
-    });
+app.get('/product-info/', async function(req, res) {
+  try {
+    let skus = await stripe.skus.list()
+    let products = await stripe.products.list()
+
+    let _skus = skus.data
+    let _products = products.data
+    let product = {}
+
+    let final = _skus.map(sku => {
+      for(let i = 0; i < _products.length; i++){
+        if(_products[i].id == sku.product){
+          let price = (sku.price / 100).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+          
+          product = {
+            name: _products[i].name,
+            description: _products[i].description,
+            attributes_prod: _products[i].attributes,
+            images: _products[i].images,
+            price_parsed: price,
+            ...sku
+          }
+        }
+      }
+      return product
+    })
+    res.json(final)
+  }
+  catch(err) {
+    console.log(err)
+    res.status(500).send(err)
+  }
 });
 
 app.post("/create-product", function(req, res) {
